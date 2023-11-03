@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EndOfYear</title>
+    
+        <link rel="stylesheet" href="painting/css/normalize.css">
+        <link rel="stylesheet" href="painting/css/animate.min.css">
+        <link rel="stylesheet" href="painting/css/painting.css">
+    
+    <script async src="https://umami.7wate.org/script.js"
+            data-website-id="635fec50-bc6c-4ac2-909a-e2a7403438be"></script>
+</head>
+<body>
+<div class="container active animate__animated animate__fadeIn animate__slow" id="tab1">
+    <audio id="bgm" loop>
+        
+            <source src="painting/music/bgm.mp3" type="audio/mpeg">Your browser does not support the audio element.
+        
+
+    </audio>
+    <div class="popup">
+        <div class="notice">
+            <h4>温馨提示</h4>
+            <hr>
+            <p>EndofYear 使用互联网上公开的 RSS 数据源，并使用自建的 Umami 服务统计访问量，绝对不会主动获取个人隐私信息。🫣🫣🫣
+                <br>
+                <br>
+                开启方式：小手轻轻点 ~
+                <a href="https://github.com/7Wate/EndOfYear"></a>
+            </p>
+        </div>
+        <div class="selection">
+            <button value="true" class="allow">开启音乐</button>
+            <button value="false" class="deny">静音进入</button>
+
+        </div>
+    </div>
+</div>
+<div class="container animate__animated animate__fadeIn animate__slow" id="tab2">
+    <div class="tab2-box">
+        <p class="animate__animated animate__fadeIn animate__delay-1s">亲爱的秋风于渭水</p>
+        
+            <p class="animate__animated animate__fadeIn animate__delay-2s">旧事如梦，一年已过</p>
+            <p class="animate__animated animate__fadeIn animate__delay-2s">贰三年、感谢有你!</p>
+        
+    </div>
+
+</div>
+<div class="container animate__animated animate__fadeIn animate__slow" id="tab3">
+    <div class="tab3-box">
+        <p class="animate__animated animate__fadeInUp animate__delay-1s">这一年你写下了</p>
+        <p class="animate__animated animate__fadeInUp animate__delay-2s"><small>10</small>
+            篇博文</p>
+        <p class="animate__animated animate__fadeInUp animate__delay-3s">
+            <small>11741</small> 个文字</p>
+    </div>
+</div>
+<div class="container animate__animated animate__fadeIn animate__slow" id="tab4">
+    <div class="tab4-box">
+        <p class="animate__animated animate__fadeInDown animate__delay-1s">七夕节那天，你写下了</p>
+        <p class="animate__animated animate__fadeInDown animate__delay-2s">N卡 支持内存显存融合，AI模型训练不再会炸显存啦</p>
+        <p class="animate__animated animate__fadeInDown animate__delay-3s">目前AI训练中，相比算力，显存大小的限制才是最头疼的地方，算力低，结果最多是慢，只要显卡够便宜，可以<small>……</small>
+        </p>
+    </div>
+</div>
+<div class="container animate__animated animate__fadeIn animate__slow" id="tab5">
+    <div class="tab5-box">
+        
+            <p>post</p>
+        
+            <p>appeared</p>
+        
+            <p>渭水</p>
+        
+            <p>秋风</p>
+        
+            <p>插件</p>
+        
+        <p class="animate__animated animate__fadeInDown animate__delay-1s">这些都是<small>你</small>的</p>
+        <p class="animate__animated animate__fadeInDown animate__delay-2s">专属<small>关键词</small></p>
+    </div>
+</div>
+<div class="container animate__animated animate__fadeIn animate__slow" id="tab6">
+    <div class="tab6-box">
+        <p class="animate__animated animate__fadeInLeft animate__delay-1s">热爱生活的你</p>
+        <p class="animate__animated animate__fadeInLeft animate__delay-2s">一定要继续砥砺前行!</p>
+    </div>
+</div>
+<div class="container animate__animated animate__fadeIn animate__slow" id="tab7">
+    <div class="tab7-box">
+        <p id="yiyan"> 孤独才是寂寞的唯一出口。</p>
+    </div>
+</div>
+
+<script>
+    // 屏幕尺寸
+    console.log("Window inner size: ", window.innerWidth, "x", window.innerHeight);
+    console.log("Window outer size: ", window.outerWidth, "x", window.outerHeight);
+    console.log("Screen size: ", screen.width, "x", screen.height);
+    console.log("Screen available size: ", screen.availWidth, "x", screen.availHeight);
+
+    // 轮播切换
+    let carousel = {
+        currentIndex: 0,
+        tabs: [],
+
+        init: function () {
+            this.tabs = document.getElementsByClassName('container');
+
+            for (let i = 0; i < this.tabs.length; i++) {
+                this.tabs[i].addEventListener('click', () => {
+                    this.next();
+                });
+            }
+        },
+
+        next: function () {
+            this.tabs[this.currentIndex].classList.remove('active');
+            this.currentIndex = (this.currentIndex + 1) % this.tabs.length;
+            this.tabs[this.currentIndex].classList.add('active');
+        }
+    };
+
+    window.onload = function () {
+        carousel.init();
+    };
+
+    // 弹出提示
+    let popup = document.querySelector('.popup');
+    let allowButton = document.querySelector('.allow');
+    let denyButton = document.querySelector('.deny');
+    let audioElement = document.getElementById('bgm');
+
+    allowButton.addEventListener('click', function (event) {
+        event.stopPropagation();
+        audioElement.play(); // 播放音乐
+        popup.style.display = 'none'; // 隐藏弹出窗口
+    });
+
+    denyButton.addEventListener('click', function (event) {
+        event.stopPropagation();
+        popup.style.display = 'none'; // 隐藏弹出窗口
+    });
+
+    // 博客最后的一言
+    window.addEventListener('DOMContentLoaded', (event) => {
+        let textElement = document.getElementById("yiyan");
+        let text = textElement.innerHTML;
+        textElement.innerHTML = text.replace(/[\u3000-\u303F\uFF01-\uFF0F\uFF1A-\uFF1E\uFF3B-\uFF3F\uFF5B-\uFF60\uFFE0-\uFFE6\u00D2]/g, "<br>");
+    });
+</script>
+
+</body>
+</html>
